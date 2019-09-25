@@ -21,7 +21,7 @@ io.on('connection', function (socket) {
   })
 
   socket.on('online', function (names) {
-    if (!users.includes(names)) {
+    if (!users.includes(names)&& username.val()!=data[i]) {
       users.push(names);
       io.emit("online", users)
      // console.log(users)
