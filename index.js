@@ -31,7 +31,7 @@ io.on('connection', function (socket) {
   });
   socket.on('disconnect',function(data){
     var i = users.indexOf(data);
-    users.splice(i);
+    users.splice(i,1);
     io.emit('online',users);
  })
 });

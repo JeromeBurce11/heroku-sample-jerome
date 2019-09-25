@@ -26,6 +26,7 @@ $(function () {
 
 
     $('#submitButton').click(function () {
+        if(!(username.val()=null || username.val()==" ")){
         //$('#activeUser').append("<li>"+username.val());
         $("#title").text(username.val());
         socket.emit('online', username.val());
@@ -36,7 +37,10 @@ $(function () {
             socket.emit('disconnect', username.val());
             location.reload();
           })
+        }else{
+        $('#userinterface').show();
 
+        }
     })
     $('form').submit(function () {
         socket.emit('chat message', username.val() + " : " + $('#m').val());
@@ -57,11 +61,6 @@ $(function () {
         }, 2000);
     })
 
-
-
-    socket.on('offline', function () {
-
-    })
     socket.on('chat message', function (msg) {
         // $('#messages').append($('<li>').text(msg));
         console.log(msg.split(" : ")[0])
