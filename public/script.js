@@ -11,7 +11,7 @@ $(function () {
         $('.Us').remove()
         for (let i = 0; i < data.length; i++) {
            // console.log(listOfUser)
-            if (!listOfUser.includes(data[i]) && username.val() != data[i]) {
+            if (!listOfUser.includes(data[i])) {
                 listOfUser.push(data[i]);
                 var user = data[i];
                 $('#activeUser').append($("<li class='Us'>").text(user));
@@ -32,13 +32,12 @@ $(function () {
        // console.log(username.val());
         $('#userinterface').hide();
         $("#SMS").show();
-        
-    })
-    $("#disconnect").click(function () {
-        socket.emit('disconnect', username.val());
-        location.reload();
-      })
+        $("#disconnect").click(function () {
+            socket.emit('disconnect', username.val());
+            location.reload();
+          })
 
+    })
     $('form').submit(function () {
         socket.emit('chat message', username.val() + " : " + $('#m').val());
         $('#m').val('');
