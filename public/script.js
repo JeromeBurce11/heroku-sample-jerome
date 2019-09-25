@@ -32,12 +32,13 @@ $(function () {
        // console.log(username.val());
         $('#userinterface').hide();
         $("#SMS").show();
-        $("#disconnect").click(function () {
-            socket.emit('disconnect', username.val());
-            location.reload();
-          })
-
+        
     })
+    $("#disconnect").click(function () {
+        socket.emit('disconnect', username.val());
+        location.reload();
+      })
+
     $('form').submit(function () {
         socket.emit('chat message', username.val() + " : " + $('#m').val());
         $('#m').val('');
