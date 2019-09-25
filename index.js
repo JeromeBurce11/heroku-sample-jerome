@@ -21,7 +21,7 @@ io.on('connection', function (socket) {
   })
 
   socket.on('online', function (names) {
-    if (!users.includes(names)&& username.val()!=data[i]) {
+    if (!users.includes(names)) {
       users.push(names);
       io.emit("online", users)
      // console.log(users)
@@ -31,7 +31,7 @@ io.on('connection', function (socket) {
   });
   socket.on('disconnect',function(data){
     var i = users.indexOf(data);
-    users.splice(i,1);
+    users.splice(i);
     io.emit('online',users);
  })
 });

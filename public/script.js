@@ -11,7 +11,7 @@ $(function () {
         $('.Us').remove()
         for (let i = 0; i < data.length; i++) {
            // console.log(listOfUser)
-            if (!listOfUser.includes(data[i])) {
+            if (!listOfUser.includes(data[i]) && username.val() != data[i]) {
                 listOfUser.push(data[i]);
                 var user = data[i];
                 $('#activeUser').append($("<li class='Us'>").text(user));
