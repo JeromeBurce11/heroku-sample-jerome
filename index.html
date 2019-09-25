@@ -1,1 +1,58 @@
-<h1>passerellesnumeriques</h1>
+<!doctype html>
+<html>
+
+<head>
+  <title id="title">chat app</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+  <center>
+    <div>
+      <div id="userinterface" class="user">
+        <div class='nickname' class='nickname'><br><br><br>
+          <label style="font-size: 20px;font-family:cursive">USERNAME: </label><br>
+          <input style="color:black;" type="text" id="username"><br><br>
+          <button type='button' id="submitButton" class="btn btn-info">SUBMIT</button>
+        </div>
+      </div>
+
+      <div id="SMS">
+
+        <div class='activeUser'>
+          <button class="btn btn-info" id="disconnect">Disconnect</button><br>
+          active User/s:
+          <p id="activeUser"></p>
+        </div>
+
+        <div class="chatbox">
+          <ul id="messages"></ul>
+          <div id="active"></div>
+
+        </div>
+        <div class="box">
+          <h3 id="typing"></h3>
+        </div>
+
+        <form action="">?
+          <center>
+            <div class="backC">
+             <input style="color:black" id="m" placeholder="Type a message here..." /><button class="btn btn-info">Send</button>
+          </center>
+      </div>
+      </form>
+
+
+    </div>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="script.js"></script>
+
+  </center>
+</body>
+
+</html>
