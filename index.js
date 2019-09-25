@@ -21,6 +21,7 @@ io.on('connection', function (socket) {
   })
 
   socket.on('online', function (names) {
+
     if (!users.includes(names)) {
       users.push(names);
       io.emit("online", users)
@@ -29,10 +30,16 @@ io.on('connection', function (socket) {
       io.emit("already_used", names+" already used");
     }
   });
-  socket.on('disconnect',function(data){
-    var i = users.indexOf(data);
-    users.splice(i,1);
-    io.emit('online',users);
+  socket.on('logout',function(username){
+    var index = 0;
+    for (var i=0;i<users.length;++i) {
+      if (username == users[i]) {
+        index = i;
+      }
+    }
+    console.log(index);
+    users.splice(index, 1);
+    io.emit('logout',users);
  })
 });
 app.use(express.static('public'));

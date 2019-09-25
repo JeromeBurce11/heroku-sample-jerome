@@ -10,11 +10,12 @@
 
 </head>
 
-<body>
+<body style="background-image:url('https://previews.123rf.com/images/chekman/chekman1507/chekman150700004/42148916-message-communication-idea-over-attractive-background-concept-of-global-messaging.jpg')">
   <center>
     <div>
       <div id="userinterface" class="user">
         <div class='nickname' class='nickname'><br><br><br>
+          <img style="width:100px;height:100px;margin-top: -30px;" src="http://www.chatnow.co/images/about-pic.png"><br>
           <label style="font-size: 20px;font-family:cursive">USERNAME: </label><br>
           <input style="color:black;" type="text" id="username"><br><br>
           <button type='button' id="submitButton" class="btn btn-info">SUBMIT</button>
@@ -22,14 +23,17 @@
       </div>
 
       <div id="SMS">
-
+         
         <div class='activeUser'>
-          <button class="btn btn-info" id="disconnect">Disconnect</button><br>
-          active User/s:
-          <p id="activeUser"></p>
+          <center><br>
+            <button class="btn btn-info" id="disconnect">Disconnect</button><br>
+            <h1>Active User/s:</h1>
+            <div class="aUser" id="activeUser"></div>
+          </center>
         </div>
 
         <div class="chatbox">
+            <img style="width:100px;height:100px;" src="http://www.chatnow.co/images/about-pic.png">
           <ul id="messages"></ul>
           <div id="active"></div>
 
@@ -37,22 +41,22 @@
         <div class="box">
           <h3 id="typing"></h3>
         </div>
-
-        <form action="">?
-          <center>
+        <center>
+          <form action="">?
             <div class="backC">
-             <input style="color:black" id="m" placeholder="Type a message here..." /><button class="btn btn-info">Send</button>
-          </center>
+              <input style="color:black;margin-left: 30px;" id="m" placeholder="Type a message here..." /><button class="btn btn-info">Send</button>
+            </div>
+          </form>
+        </center>
+
+
       </div>
-      </form>
-
-
-    </div>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="script.js"></script>
+      <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+      <script src="script.js"></script>
 
   </center>
 </body>
+<footer id ="footer"></footer>
 
 </html>

@@ -2,7 +2,8 @@ $("#SMS").hide();
 $(function () {
     var names = $('#username').val();
     var username = $('#username');
-    
+    var myname = '';
+
     //var listOfUser = [];
     var socket = io();
 
@@ -10,7 +11,7 @@ $(function () {
         listOfUser = [];
         $('.Us').remove()
         for (let i = 0; i < data.length; i++) {
-           // console.log(listOfUser)
+            // console.log(listOfUser)
             if (!listOfUser.includes(data[i]) && username.val() != data[i]) {
                 listOfUser.push(data[i]);
                 var user = data[i];
@@ -20,33 +21,50 @@ $(function () {
         console.log(listOfUser)
     })
 
-    socket.on("already_used", function(data){
+    socket.on("already_used", function(data) {
         alert(data);
     })
 
 
     $('#submitButton').click(function () {
-        if(!(username.val()=null || username.val()==" ")){
         //$('#activeUser').append("<li>"+username.val());
         $("#title").text(username.val());
+        myname = username.val();
         socket.emit('online', username.val());
-       // console.log(username.val());
+        // console.log(username.val());
         $('#userinterface').hide();
         $("#SMS").show();
-        $("#disconnect").click(function () {
-            socket.emit('disconnect', username.val());
-            location.reload();
-          })
-        }else{
-        $('#userinterface').show();
 
-        }
+
     })
+
+    $("#disconnect").click(function () {
+        alert(myname);
+        socket.emit('logout', myname);
+        location.reload();
+    })
+
     $('form').submit(function () {
         socket.emit('chat message', username.val() + " : " + $('#m').val());
         $('#m').val('');
         return false;
     });
+
+    socket.on('logout', function (data) {
+        listOfUser = [];
+        $('.Us').remove()
+        for (let i = 0; i < data.length; i++) {
+            // console.log(listOfUser)
+            if (!listOfUser.includes(data[i]) && username.val() != data[i]) {
+                listOfUser.push(data[i]);
+                var user = data[i];
+                $('#activeUser').append($("<h1  class='Us' >").text(user)+"</h1><br><br><br>");
+                
+            }
+        }
+        console.log(listOfUser)
+        
+    })
 
     $('#m').on('keypress', function () {
         socket.emit('typing', username.val());
@@ -54,13 +72,18 @@ $(function () {
 
 
     socket.on('typing', function (msg, err) {
-      //  console.log(err);
+        //  console.log(err);
         $('#typing').html(msg + " is typing a message...");
         setTimeout(function () {
             $("#typing").html('');
         }, 2000);
     })
 
+
+
+    socket.on('offline', function () {
+
+    })
     socket.on('chat message', function (msg) {
         // $('#messages').append($('<li>').text(msg));
         console.log(msg.split(" : ")[0])
