@@ -1,0 +1,26 @@
+{
+  "name": "heroku-sample-jerome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeromeBurce11/heroku-sample-jerome.git"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+  ],
+  "author": "Jerome Burce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeromeBurce11/heroku-sample-jerome/issues"
+  },
+  "homepage": "https://github.com/JeromeBurce11/heroku-sample-jerome#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
