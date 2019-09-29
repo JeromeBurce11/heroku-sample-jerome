@@ -58,7 +58,7 @@ $(function () {
             if (!listOfUser.includes(data[i]) && username.val() != data[i]) {
                 listOfUser.push(data[i]);
                 var user = data[i];
-                $('#activeUser').append($("<h1  class='Us' >").text(user)+"</h1><br><br><br>");
+                $('#activeUser').append($("<h1  class='Us' >").text(user));
                 
             }
         }
