@@ -3,12 +3,15 @@ $(function () {
     var names = $('#username').val();
     var username = $('#username');
     var myname = '';
-
+    
+    
+    // $("#Counter").val(counter);
     //var listOfUser = [];
     var socket = io();
 
     socket.on('online', function (data) {
         listOfUser = [];
+        
         $('.Us').remove()
         for (let i = 0; i < data.length; i++) {
             // console.log(listOfUser)
@@ -17,8 +20,13 @@ $(function () {
                 var user = data[i];
                 $('#activeUser').append($("<li class='Us'>").text(user));
             }
-        }
-        console.log(listOfUser)
+        } 
+        if(listOfUser.length==1){
+            $("#Counter").text(listOfUser.length+1+ " Active User");
+        }  else{
+            $("#Counter").text(listOfUser.length+1+ " Active Users");
+        } 
+       
     })
 
     socket.on("already_used", function(data) {
@@ -27,6 +35,7 @@ $(function () {
 
 
     $('#submitButton').click(function () {
+        
         //$('#activeUser').append("<li>"+username.val());
         $("#title").text(username.val());
         myname = username.val();
@@ -39,6 +48,7 @@ $(function () {
     })
 
     $("#disconnect").click(function () {
+       
         alert(myname);
         socket.emit('logout', myname);
         location.reload();
@@ -54,7 +64,6 @@ $(function () {
         listOfUser = [];
         $('.Us').remove()
         for (let i = 0; i < data.length; i++) {
-            // console.log(listOfUser)
             if (!listOfUser.includes(data[i]) && username.val() != data[i]) {
                 listOfUser.push(data[i]);
                 var user = data[i];
@@ -62,7 +71,8 @@ $(function () {
                 
             }
         }
-        console.log(listOfUser)
+        $("#Counter").text(listOfUser.length+1)
+        console.log(listOfUser.length)
         
     })
 
