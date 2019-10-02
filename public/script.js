@@ -21,12 +21,8 @@ $(function () {
                 $('#activeUser').append($("<li class='Us'>").text(user));
             }
         } 
-        if(listOfUser.length==1){
-            $("#Counter").text(listOfUser.length+1+ " Active User");
-        }  else{
-            $("#Counter").text(listOfUser.length+1+ " Active Users");
-        } 
-       
+
+            $("#Counter").text(listOfUser.length+1);      
     })
 
     socket.on("already_used", function(data) {
